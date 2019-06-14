@@ -9,7 +9,10 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
 
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
-    alert(data.message)
+    const messages = document.querySelector(".messages");
+    const tmp = document.createElement("div");
+    tmp.innerHTML = data['message'];
+    messages.appendChild(tmp.firstElementChild);
   },
 
   speak: function(message) {
