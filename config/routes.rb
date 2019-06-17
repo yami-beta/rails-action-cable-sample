@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'users#index'
   resources :users
   resources :user_sessions
   get 'login' => 'user_sessions#new', :as => :login
