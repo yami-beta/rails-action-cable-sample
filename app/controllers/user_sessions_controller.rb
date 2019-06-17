@@ -7,6 +7,7 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
+      cookies.encrypted[:user_id] = @user.id
       redirect_back_or_to(:users, notice: 'Login successful')
     else
       flash.now[:alert] = 'Login failed'
